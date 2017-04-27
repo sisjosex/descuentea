@@ -1,0 +1,123 @@
+<ons-page ng-controller="Plan" class="plan slider-page">
+    <ons-toolbar class="">
+        <div class="left">
+            <button ng-click="back()" class="button-no-border back-button">
+                <span class="back-button__label">
+                    <img class="header-icon" src="img/back.png" alt="">
+                </span>
+            </button>
+        </div>
+        <div class="center">
+            <img src="img/logo-header.png" alt="">
+        </div>
+
+        <div class="right">
+            <!--<ons-button ng-click="share(plan, 'plan')">
+                <img class="header-icon" src="img/icon_share.png" alt="">
+            </ons-button>-->
+        </div>
+
+        <!--<div class="fixed">-->
+            <!--<div class="plan-gallery">-->
+                <!--<figure class="gallery-item" ng-click="">-->
+                    <!--<div class="preview" src="{{ trustSrc(plan.image) }}"></div>-->
+
+                    <!--<div class="canjear" ng-show="reservado(plan)" ng-click="canjearDescuento(plan.usuarios_promocions_id)">-->
+                        <!--<div class="distance like">{{ labels.canjear }}</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="plan-detail-title">-->
+                        <!--<h1>{{ plan.title }}</h1>-->
+                        <!--<h2 ng-bind-html="plan.subtitle"></h2>-->
+                    <!--</div>-->
+
+                    <!--<div class="legend">-->
+                        <!--<div class="left distance">{{ plan.distancia }}</div>-->
+                        <!--<div class="center">-->
+                            <!--<div class="distance like" ng-show="available(plan)">{{ labels.reservar }}</div>-->
+                            <!--<div class="distance like" ng-show="noGetUser()" ng-click="goToPreRegister()">{{ labels.hazte_socio }}</div>-->
+                        <!--</div>-->
+                        <!--<div class="right plan-price">{{ plan.price }}</div>-->
+                    <!--</div>-->
+                <!--</figure>-->
+            <!--</div>-->
+        <!--</div>-->
+    </ons-toolbar>
+
+    <div class="plan-gallery">
+        <figure class="gallery-item" ng-click="">
+            <div class="preview" src="{{ trustSrc(plan.image) }}" ng-click="showImage(plan.image)"></div>
+
+            <div class="canjear" ng-show="reservado(plan)">
+                <div class="distance like">{{ labels.canjear }}</div>
+            </div>
+
+            <!--<div class="video2" ng-show="plan.video != '' && plan.video != undefined" ng-click="playVideo(item.video)"></div>-->
+
+            <div class="plan-detail-title">
+                <h1>{{ plan.title }}</h1>
+                <h2 ng-bind-html="plan.subtitle"></h2>
+            </div>
+
+            <div class="legend">
+                <div class="left distance">{{ plan.distancia }}</div>
+                <div class="center">
+                    <div class="distance like" ng-show="available(plan)">{{ labels.reservar }}</div>
+                    <!--<div class="distance like" ng-show="reservado(plan)">{{ labels.reservado }}</div>-->
+                    <div class="distance like" ng-show="noGetUser()" ng-click="goToPreRegister()">{{ labels.hazte_socio }}</div>
+                </div>
+                <div class="right plan-price">{{ plan.price }}</div>
+            </div>
+        </figure>
+    </div>
+
+    <div class="plan-detail-content">
+        <div class="plan-section">
+            <h3 class="plan-title">{{ labels.info }}</h3>
+            <div class="plan-description" ng-bind-html="plan.descripcion"></div>
+        </div>
+
+        <div class="plan-section" ng-show="plan.condicion != '' && plan.condicion != undefined">
+            <h3 class="plan-title">{{ labels.condiciones }}</h3>
+            <div class="plan-description" ng-bind-html="plan.condicion"></div>
+        </div>
+
+        <!--<div class="plan-section" ng-show="plan.direccion != '' && plan.direccion != undefined">-->
+            <!--<h3 class="plan-title">{{ labels.donde }}</h3>-->
+            <!--<div class="plan-description" ng-bind-html="plan.direccion"></div>-->
+        <!--</div>-->
+
+        <div class="plan-section" ng-show="plan.como_reservar != '' && plan.como_reservar != undefined">
+            <h3 class="plan-title">{{ labels.como_reservar }}</h3>
+            <div class="plan-description" ng-bind-html="plan.como_reservar"></div>
+        </div>
+
+        <div class="plan-section" ng-show="plan.direccion != '' && plan.direccion != undefined && getUser() != false">
+            <h3 class="plan-title">{{ labels.direccion }}</h3>
+            <div class="plan-description" ng-bind-html="plan.direccion"></div>
+        </div>
+    </div>
+
+    <ons-bottom-toolbar class="loquiero-bar">
+        <ons-button ng-click="openLocation(plan)" class="button2" ng-show="getUser() != false">
+            <img src="img/icon_localizacion.png" alt="">
+            <span class="text">{{ labels.localizacion }}</span></ons-button>
+        <ons-button ng-click="call(plan.telefono)" class="button2" ng-show="getUser() != false">
+            <img src="img/icon_phone.png" alt="">
+            <span class="text">{{ labels.llamar }}</span></ons-button>
+        </ons-button>
+        <ons-button ng-click="loQuiero(plan)" class="button full btn-loquiero" ng-show="plan.usuario_estado=='reservar'">
+            <img src="img/icon_loquiero.png" alt="">
+            <span class="text">{{ labels.lo_quiero }}</span></ons-button>
+        </ons-button>
+        <ons-button ng-click="canjearDescuento(plan.usuarios_promocions_id)" class="button full btn-loquiero" ng-show="plan.usuario_estado=='reservado'">
+            <img src="img/icon_loquiero.png" alt="">
+            <span class="text">{{ labels.canjear_plan }}</span></ons-button>
+        </ons-button>
+        <ons-button ng-click="goToPreRegister()" class="button full btn-loquiero" ng-show="noGetUser()">
+            <img src="img/icon_loquiero.png" alt="">
+            <span class="text">{{ labels.lo_quiero_invitado }}</span></ons-button>
+        </ons-button>
+    </ons-bottom-toolbar>
+
+</ons-page>

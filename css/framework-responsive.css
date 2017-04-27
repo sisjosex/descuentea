@@ -1,0 +1,71 @@
+@media all and (max-width:413px) {
+
+    .message {
+        font-size: 15px;
+    }
+
+    .message img {
+        height: 30px;
+    }
+
+    .form input, .form button {
+        font-size: 18px;
+    }
+
+    .home .full-width .text {
+        font-size: 15px;
+    }
+}
+
+@media all and (max-width:360px) {
+
+    .navigation-bar__title {
+        font-size: 15px;
+    }
+
+    .navigation-bar .button img, .back-button img, .toolbar-transparent .button img, .toolbar-transparent .back-button img {
+        height: 24px;
+    }
+
+    .back-button__label {
+        margin-left:0;
+    }
+
+    /*.navigation-bar__center img {
+        max-height: 30px;
+    }*/
+
+    .button {
+        line-height: 20px;
+    }
+
+    .list__item__center {
+        line-height: 1.2em;
+    }
+
+    .list__item__subtitle {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .button .text {
+        /*font-size: 11px !important;*/
+    }
+
+    .loquiero-bar {
+        height: auto;
+        text-align: center;
+    }
+
+    .legend .right {
+        position: absolute;
+        right: 10px;
+        bottom: 6px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .btn-loquiero .text {
+        font-size: 13px !important;
+    }
+}

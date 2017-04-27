@@ -1,0 +1,40 @@
+<ons-page ng-controller="PreRegister" class="preregister">
+
+    <ons-toolbar class="transparent">
+        <div class="left">
+            <ons-back-button><img class="header-icon" src="img/btn_back.png" alt=""></ons-back-button>
+        </div>
+
+        <div class="center">
+
+        </div>
+        <div class="right"></div>
+    </ons-toolbar>
+
+    <div class="container-vertical">
+
+        <div class="center-vertical">
+
+            <div class="logo-preregister">
+                <img src="img/logo_preregister.png" alt="">
+            </div>
+
+            <div class="message black" ng-bind-html="labels.preregister_header"></div>
+
+            <div class="message black big" ng-bind-html="labels.preregister_pruebalo"></div>
+
+            <br>
+
+            <div class="form center">
+                <button class="yellow big" ng-click="goToRegister()" ng-bind-html="labels.preregister_price_now"></button>
+            </div>
+
+            <div class="message black">
+                {{ labels.preregister_already_user }}
+                <a ng-click="goToLogin()" class="red">{{ labels.preregister_click_here }}</a>
+            </div>
+        </div>
+
+    </div>
+
+</ons-page>

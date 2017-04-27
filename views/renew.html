@@ -1,0 +1,56 @@
+<ons-page ng-controller="Renew" class="register">
+
+    <ons-toolbar class="transparent">
+        <div class="left">
+            <ons-back-button><img class="header-icon" src="img/btn_back.png" alt=""></ons-back-button>
+        </div>
+
+        <div class="center">
+
+        </div>
+        <div class="right"></div>
+    </ons-toolbar>
+
+    <div class="container-vertical">
+
+        <div class="center-vertical">
+
+            <div class="message white" ng-bind-html="labels.renew_header"></div>
+
+            <div class="form center">
+
+                <div class="form-group">
+                    <input type="text" ng-model="user.tarjeta" ng-class="{'error': errors.tarjeta != ''}" placeholder="{{ labels.tarjeta }}" maxlength="16">
+                    <div class="error_message">{{ errors.tarjeta }}</div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="select">
+                        <label ng-class="{'placeholder': user.mes == labels.month}">{{ user.mes }}</label>
+                        <select name="" class="form-control" ng-model="user.mes" ng-class="{'error': errors.mes != ''}">
+                            <option value="{{u.id}}" ng-repeat="u in labels.months">{{u.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="error_message">{{ errors.mes }}</div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" ng-model="user.ano" ng-class="{'error': errors.ano != ''}" placeholder="{{ labels.ano }}" maxlength="2">
+                    <div class="error_message">{{ errors.ano }}</div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" ng-model="user.cvc" ng-class="{'error': errors.cvc != ''}" placeholder="{{ labels.cvc }}" maxlength="3">
+                    <div class="error_message">{{ errors.cvc }}</div>
+                </div>
+
+
+                <button class="yellow" ng-click="renewSubscription()">{{ labels.enviar }}</button>
+            </div>
+        </div>
+
+    </div>
+
+</ons-page>

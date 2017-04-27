@@ -1,0 +1,57 @@
+<ons-page ng-controller="Login" class="login">
+
+    <ons-toolbar class="transparent">
+        <div class="left">
+        </div>
+
+        <div class="center">
+
+        </div>
+        <div class="right"></div>
+    </ons-toolbar>
+
+    <div class="container-vertical">
+
+        <div class="center-vertical">
+            <div class="center lang-container absolute">
+                <button ng-click="setLanguage('es')"><img src="img/es.png" alt=""></button>
+                <button ng-click="setLanguage('en')"><img src="img/en.png" alt=""></button>
+            </div>
+
+            <div class="message error">
+                <i><img src="img/like_red.png" alt=""></i> {{ labels.acceso_socios }}
+            </div>
+
+            <div class="message" ng-bind-html="labels.login_msg1">
+
+            </div>
+
+            <div class="form center">
+
+                <input type="text" ng-model="email" ng-class="{'error': login_error == true}" placeholder="{{ labels.email }}">
+                <br>
+                <span class="error_message">{{ error_message }}</span>
+                <br>
+                <button class="yellow" ng-click="loginUser()">{{ labels.entrar }}</button>
+            </div>
+
+            <div class="message few warning">
+                <i><img src="img/icon_warning.png" alt=""></i>
+                <span ng-bind-html="labels.login_msg2"></span>
+            </div>
+
+            <div class="message error margin-top-40">
+                <i><img src="img/icon_triste.png" alt=""></i> {{ labels.no_socios }}
+            </div>
+
+            <div class="message" ng-bind-html="labels.login_msg3">
+            </div>
+
+            <div class="form center">
+                <button class="yellow" ng-click="goToInvitado()">{{ labels.invitado }}</button>
+            </div>
+        </div>
+
+    </div>
+
+</ons-page>

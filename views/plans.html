@@ -1,0 +1,83 @@
+<ons-splitter ng-controller="Plans" class="plans">
+    <ons-splitter-content>
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button><img class="header-icon" src="img/back.png" alt=""></ons-back-button>
+                </div>
+                <div class="center">
+                    <img src="img/logo-header.png" alt="">
+                </div>
+                <div class="right">
+                    <ons-button ng-click="rightSplitter.toggle()"><img class="header-icon" src="img/icon_search.png"
+                                                                       alt=""></ons-button>
+                </div>
+            </ons-toolbar>
+
+            <ons-list class="plan-list">
+                <ons-list-item class="plan-box preview" ng-repeat="item in plans track by $index"
+                               ng-click="goToPlan(item.id)" src="{{ trustSrc(item.image) }}">
+
+                    <!--<div class="preview" src="{{ trustSrc(item.image) }}"></div>-->
+
+                    <div class="canjear fix-left" ng-show="canjeable(item)">
+                        <div class="distance like">{{ labels.reservado }}</div>
+                    </div>
+
+                    <div class="canjear fix-left" ng-show="reservable(item)">
+                        <div class="distance like">{{ labels.reservado }}</div>
+                    </div>
+
+                    <!--<div class="video2" ng-show="item.video != ''" ng-click="playVideo(item.video)"></div>-->
+
+                    <div class="plan-list-title">
+                        <h1>{{ item.title }}</h1>
+
+                        <h2 ng-bind-html="item.subtitle"></h2>
+                    </div>
+
+                    <!--<div class="legend">
+                        <div class="left fecha">{{ item.fecha }}</div>
+                        <div class="center">
+                            <div class="distance">{{ item.distancia }}</div>
+                        </div>
+                        <div class="right">{{ item.price }}</div>
+                    </div>-->
+                    <div class="legend">
+                        <div class="left distance">{{ item.distancia }}</div>
+                        <div class="center">
+                            <div class="distance like" ng-show="available(item)">{{ labels.reservar }}</div>
+                            <!--<div class="distance like" ng-show="reservado(item)">{{ labels.reservado }}</div>-->
+                            <div class="distance like" ng-show="noGetUser()" ng-click="goToPreRegister()">{{ labels.hazte_socio }}</div>
+                        </div>
+                        <div class="right plan-price">{{ item.price }}</div>
+                    </div>
+                </ons-list-item>
+            </ons-list>
+
+        </ons-page>
+    </ons-splitter-content>
+
+    <ons-splitter-side var="rightSplitter" side="right" width="300px" collapse swipeable
+                       threhold-ratio-should-open="0.4">
+        <ons-page class="menusearch">
+            <ons-toolbar>
+                <div class="left"></div>
+                <div class="center"></div>
+                <div class="right">
+                    <ons-button ng-click="rightSplitter.toggle()">
+                        <img class="header-icon" src="img/icon_close.png" alt="">
+                    </ons-button>
+                </div>
+            </ons-toolbar>
+            <ons-list class="menu-list">
+                <ons-list-item class="menu-box" ng-repeat="item in labels.days_search track by $index" modifier="chevron"
+                               ng-click="searchByDay(item.id)">
+                    <div class="center">
+                        <div class="list__item__title"><h1 class="menu-search-title">{{ item.title }}</h1></div>
+                    </div>
+                </ons-list-item>
+            </ons-list>
+        </ons-page>
+    </ons-splitter-side>
+</ons-splitter>
